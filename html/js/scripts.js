@@ -14,41 +14,46 @@ $(document).ready(function() {
 
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-    addMarker();
-    addPolyline();
-    addInfoWindow();
+    $.ajax({
+        url: "model.php",
+        success: function(route) {
+            $.each(route.config, function(index, station){
+                addMarker(station);
+            });
+            addPolyline(route);
+        }
+    });
 });
 
 /**
- * Adds a Marker to the map.
+ * Adds a Marker to the map at the given station's location.
  */
-function addMarker() {
+function addMarker(station) {
 
     marker = new google.maps.Marker({
-        position: sfCoords,
+        position: new google.maps.LatLng(station.latitude, station.longitude),
         map: map,
-        title: "San Francisco"
+        title: station.name
     });
 }
 
 /**
  * Adds a Polyline to the map.
  */
-function addPolyline() {
+function addPolyline(route) {
 
-    // Random Coordinates for polyline test
-    var testCoords = [
-        sfCoords,
-        new google.maps.LatLng(37.7902, -122.4704),
-        new google.maps.LatLng(37.7934, -122.4041)
-    ];
+    // build an array of coordinates
+    var routeCoords = [];
+    $.each(route.config, function(index, station){
+        routeCoords.push(new google.maps.LatLng(station.latitude, station.longitude));
+    });
 
-    var testRoute = new google.maps.Polyline({
-        path: testCoords,
+    var route = new google.maps.Polyline({
+        path: routeCoords,
         strokeColor: "red",
     });
 
-    testRoute.setMap(map);
+    route.setMap(map);
 }
 
 /**
@@ -56,11 +61,11 @@ function addPolyline() {
  */
 function addInfoWindow() {
 
-    var testContent = "<h1>Test window title</h1>"+
+    var content = "<h1>Test window title</h1>"+
         "<p>Test window content paragraph</p>"
 
     var infowindow = new google.maps.InfoWindow({
-        content: testContent,
+        content: content,
     });
 
     google.maps.event.addListener(marker, "click", function() {
