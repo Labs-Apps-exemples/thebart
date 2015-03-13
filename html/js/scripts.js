@@ -3,7 +3,7 @@ var sfCoords = new google.maps.LatLng(37.7489, -122.4355);
 
 // declare map variables
 var map;
-var marker;
+var infowindow;
 
 $(document).ready(function() {
 
@@ -12,11 +12,14 @@ $(document).ready(function() {
         zoom: 12
     }
 
+    // create new map
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
+    // query route infos via ajax
     $.ajax({
         url: "model.php",
         success: function(route) {
+
             $.each(route.config, function(index, station){
                 addMarker(station);
             });
@@ -26,14 +29,35 @@ $(document).ready(function() {
 });
 
 /**
- * Adds a Marker to the map at the given station's location.
+ * Adds a Marker and corresponding infowindow to the map at the given station's location.
  */
 function addMarker(station) {
 
-    marker = new google.maps.Marker({
+    // create new marker at station location
+    var marker = new google.maps.Marker({
         position: new google.maps.LatLng(station.latitude, station.longitude),
         map: map,
         title: station.name
+    });
+
+    // prepare content for infowindow
+    var content = "<h1>" + station.name + "</h1>"+
+        "<p>" + station.abbr + "</p>";
+
+    // create new infowindow on click on marker
+    google.maps.event.addListener(marker, "click", function() {
+
+        // close opened infowindows
+        if (infowindow) {
+            infowindow.close();
+        }
+
+        // create new infowindow
+        infowindow = new google.maps.InfoWindow({
+            content: content,
+        });
+
+        infowindow.open(map, marker);
     });
 }
 
@@ -42,33 +66,17 @@ function addMarker(station) {
  */
 function addPolyline(route) {
 
-    // build an array of coordinates
+    // build an array of route config coordinates
     var routeCoords = [];
     $.each(route.config, function(index, station){
         routeCoords.push(new google.maps.LatLng(station.latitude, station.longitude));
     });
 
+    // create new polyline
     var route = new google.maps.Polyline({
         path: routeCoords,
         strokeColor: "red",
     });
 
     route.setMap(map);
-}
-
-/**
- * Adds an Info Window to the map.
- */
-function addInfoWindow() {
-
-    var content = "<h1>Test window title</h1>"+
-        "<p>Test window content paragraph</p>"
-
-    var infowindow = new google.maps.InfoWindow({
-        content: content,
-    });
-
-    google.maps.event.addListener(marker, "click", function() {
-        infowindow.open(map,marker);
-    });
 }
