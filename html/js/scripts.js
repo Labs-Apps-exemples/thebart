@@ -15,16 +15,29 @@ $(document).ready(function() {
     // create new map
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-    // query route infos via ajax
-    $.ajax({
-        url: "route.php",
-        success: function(route) {
+    $("#route_form").submit(function() {
 
-            $.each(route.config, function(index, station){
-                addMarker(station);
-            });
-            addPolyline(route);
-        }
+        // redraw map (should just remove all overlay)
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        var routeNumber = $("#route_select").val();
+
+        // query route infos via ajax
+        $.ajax({
+            url: "route.php",
+            data: {
+                route_number: routeNumber
+            },
+            success: function(route) {
+
+                $.each(route.config, function(index, station){
+                    addMarker(station);
+                });
+                addPolyline(route);
+            }
+        });
+
+        return false;
     });
 });
 

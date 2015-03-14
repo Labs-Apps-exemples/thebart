@@ -17,6 +17,16 @@
   </head>
   <body>
     <h1>The BART</h1>
+    <form id="route_form">
+      <select id="route_select">
+
+        <?php foreach ($routes as $route): ?>
+            <option value="<?= $route['number'] ?>"><?= $route['number'] ?> - <?= $route['name'] ?></option>
+        <?php endforeach ?>
+
+      </select>
+      <input type="submit">
+    </form>
     <div id="map-canvas"></div>
     <div id="php"></div>
   </body>

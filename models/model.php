@@ -64,9 +64,9 @@
         }
     }
 
-    function query_route()
+    function query_route($route_number)
     {
-        $query = query("SELECT * FROM routes WHERE number = ?", 1);
+        $query = query("SELECT * FROM routes WHERE number = ?", $route_number);
 
         foreach ($query[0] as $key => $value)
         {
