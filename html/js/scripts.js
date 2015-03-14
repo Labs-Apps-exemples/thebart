@@ -17,7 +17,7 @@ $(document).ready(function() {
 
     // query route infos via ajax
     $.ajax({
-        url: "model.php",
+        url: "route.php",
         success: function(route) {
 
             $.each(route.config, function(index, station){
@@ -41,8 +41,7 @@ function addMarker(station) {
     });
 
     // prepare content for infowindow
-    var content = "<h1>" + station.name + "</h1>"+
-        "<p>" + station.abbr + "</p>";
+    var content = "<h1>" + station.name + "</h1>" + "<p>" + station.abbr + "</p>";
 
     // create new infowindow on click on marker
     google.maps.event.addListener(marker, "click", function() {

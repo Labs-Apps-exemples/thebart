@@ -64,37 +64,38 @@
         }
     }
 
-    $query = query("SELECT * FROM routes WHERE number = ?", 1);
-
-    foreach ($query[0] as $key => $value)
+    function query_route()
     {
-        if ($key === 'config')
+        $query = query("SELECT * FROM routes WHERE number = ?", 1);
+
+        foreach ($query[0] as $key => $value)
         {
-            // split stations configuration
-            $config = explode(',', $value);
-
-            foreach ($config as $station_abbr)
+            if ($key === 'config')
             {
-                // query current station
-                $query = query("SELECT * FROM stations WHERE abbr = ?", $station_abbr);
+                // split stations configuration
+                $config = explode(',', $value);
 
-                $station = [];
-                foreach($query[0] as $key => $value)
+                foreach ($config as $station_abbr)
                 {
-                    $station[$key] = $value;
-                }
+                    // query current station
+                    $query = query("SELECT * FROM stations WHERE abbr = ?", $station_abbr);
 
-                $route['config'][] = $station;
+                    $station = [];
+                    foreach($query[0] as $key => $value)
+                    {
+                        $station[$key] = $value;
+                    }
+
+                    $route['config'][] = $station;
+                }
+            }
+            else
+            {
+                $route[$key] = $value;
             }
         }
-        else
-        {
-            $route[$key] = $value;
-        }
-    }
-    // set MIME type
-    header('Content-type: application/json');
 
-    // output JSON
-    print(json_encode($route));
+        return $route;
+    }
+
 ?>
