@@ -1,24 +1,23 @@
 <h2><?= $station->name ?></h2>
+<p>Next departures:</p>
 <table>
 
   <thead>
     <tr>
-      <th>Destination</th>
-      <th>ETD</th>
+      <th>Destination:</th>
+      <th>Time:</th>
     </tr>
   </thead>
 
   <tbody>
 
-    <?php foreach ($station->etd as $etd): ?>
-        <?php foreach ($etd->estimate as $estimate): ?>
+    <?php foreach ($departures as $departure): ?>
 
           <tr>
-            <th><?= $etd->destination ?></th>
-            <th><?= $estimate->minutes ?><?= ($estimate->minutes == 'Leaving') ? '' : 'min' ?></th>
+            <th><?= $departure['destination'] ?></th>
+            <th><?= $departure['minutes'] ?><?= ($departure['minutes'] == 'Leaving') ? '' : ' min' ?></th>
           </tr>
 
-        <?php endforeach ?>
     <?php endforeach ?>
 
   </tbody>
