@@ -1,24 +1,26 @@
 // San Francisco coordinates
 var sfCoords = new google.maps.LatLng(37.7489, -122.4355);
 
-// declare map variables
+// global variables
 var map;
 var infowindow;
+var overlays = [];
 
 $(document).ready(function() {
 
+    // create new map
     var mapOptions = {
         center: sfCoords,
-        zoom: 12
+        zoom: 11
     }
-
-    // create new map
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
     $("#route_form").submit(function() {
 
-        // redraw map (should just remove all overlay)
-        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        // clear overlays (http://apitricks.blogspot.ch/2010/02/clearoverlays-in-v3.html)
+        while (overlays[0]) {
+            overlays.pop().setMap(null);
+        }
 
         var routeNumber = $("#route_select").val();
 
@@ -42,7 +44,7 @@ $(document).ready(function() {
 });
 
 /**
- * Adds a Marker and corresponding infowindow to the map at the given station's location.
+ * Adds a Marker and corresponding infowindow.
  */
 function addMarker(station) {
 
@@ -52,6 +54,9 @@ function addMarker(station) {
         map: map,
         title: station.name
     });
+
+    // push marker in overlays array
+    overlays.push(marker);
 
     // prepare content for infowindow
     var content = "<h1>" + station.name + "</h1>" + "<p>" + station.abbr + "</p>";
@@ -85,10 +90,13 @@ function addPolyline(route) {
     });
 
     // create new polyline
-    var route = new google.maps.Polyline({
+    var polyline = new google.maps.Polyline({
         path: routeCoords,
         strokeColor: "red",
     });
 
-    route.setMap(map);
+    // push polyline to overlays array
+    overlays.push(polyline);
+
+    polyline.setMap(map);
 }
