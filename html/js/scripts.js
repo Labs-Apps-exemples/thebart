@@ -99,7 +99,7 @@ function addPolyline(route) {
     // create new Polyline
     var polyline = new google.maps.Polyline({
         path: routeCoords,
-        strokeColor: "red",
+        strokeColor: route.color,
     });
 
     // push Polyline to overlays array

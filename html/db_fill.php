@@ -38,8 +38,8 @@
         }
 
         // insert route
-        query("INSERT INTO routes (number, name, config) VALUES (?, ?, ?)",
-            $route->number, $route->name, implode(',', $config));
+        query("INSERT INTO routes (number, name, color, config) VALUES (?, ?, ?, ?)",
+            $route->number, $route->name, $route->color, implode(',', $config));
     }
 
 ?>
