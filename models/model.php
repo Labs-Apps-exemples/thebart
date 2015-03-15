@@ -64,6 +64,9 @@
         }
     }
 
+    /**
+     * Queries route informations from cache (MySQL database).
+     */
     function query_route($route_number)
     {
         $query = query("SELECT * FROM routes WHERE number = ?", $route_number);
@@ -96,6 +99,19 @@
         }
 
         return $route;
+    }
+
+    /**
+     * Queries real-time estimate time departure from BART API.
+     */
+    function query_etd($station_abbr) {
+
+        // load BART API etd xml
+        $xml = simplexml_load_file("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=$station_abbr&key=MW9S-E7SL-26DU-VV8V");
+
+        $station = $xml->station;
+
+        return $station;
     }
 
 ?>

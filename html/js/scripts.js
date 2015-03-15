@@ -8,7 +8,7 @@ var overlays = [];
 
 $(document).ready(function() {
 
-    // create new map
+    // create new Map
     var mapOptions = {
         center: sfCoords,
         zoom: 11
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
         var routeNumber = $("#route_select").val();
 
-        // query route infos via ajax
+        // query route infos via Ajax
         $.ajax({
             url: "route.php",
             data: {
@@ -44,37 +44,44 @@ $(document).ready(function() {
 });
 
 /**
- * Adds a Marker and corresponding infowindow.
+ * Adds a Marker and corresponding InfoWindow.
  */
 function addMarker(station) {
 
-    // create new marker at station location
+    // create new Marker at station location
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(station.latitude, station.longitude),
         map: map,
         title: station.name
     });
 
-    // push marker in overlays array
+    // push Marker in overlays array
     overlays.push(marker);
 
-    // prepare content for infowindow
-    var content = "<h1>" + station.name + "</h1>" + "<p>" + station.abbr + "</p>";
-
-    // create new infowindow on click on marker
+    // create new InfoWindow on click on marker
     google.maps.event.addListener(marker, "click", function() {
 
-        // close opened infowindows
+        // close opened InfoWindows
         if (infowindow) {
             infowindow.close();
         }
 
-        // create new infowindow
-        infowindow = new google.maps.InfoWindow({
-            content: content,
-        });
+        // query estimate departure time via Ajax
+        $.ajax({
+            url: "schedule.php",
+            data: {
+                station_abbr: station.abbr
+            },
+            success: function(schedule) {
 
-        infowindow.open(map, marker);
+                // create new InfoWindow
+                infowindow = new google.maps.InfoWindow({
+                    content: schedule
+                });
+
+                infowindow.open(map, marker);
+            }
+        });
     });
 }
 
@@ -89,13 +96,13 @@ function addPolyline(route) {
         routeCoords.push(new google.maps.LatLng(station.latitude, station.longitude));
     });
 
-    // create new polyline
+    // create new Polyline
     var polyline = new google.maps.Polyline({
         path: routeCoords,
         strokeColor: "red",
     });
 
-    // push polyline to overlays array
+    // push Polyline to overlays array
     overlays.push(polyline);
 
     polyline.setMap(map);
