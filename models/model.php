@@ -4,6 +4,15 @@
      * model.php
      */
 
+    // global constants
+    define('DB_NAME', 'bart');
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', 'root');
+
+    // BART's API public key
+    define('KEY', 'MW9S-E7SL-26DU-VV8V');
+
     /**
      * Executes SQL statement, possibly with parameters, returning
      * an array of all rows in result set or false on (non-fatal) error.
@@ -11,9 +20,7 @@
     function query(/* $sql [, ... ] */)
     {
         // database infos for MAMP
-        $dsn = 'mysql:dbname=bart;host=localhost';
-        $username = 'root';
-        $password = 'root';
+        $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_SERVER;
 
         // SQL statement
         $sql = func_get_arg(0);
@@ -28,7 +35,7 @@
             try
             {
                 // connect to database
-                $handle = new PDO($dsn, $username, $password);
+                $handle = new PDO($dsn, DB_USERNAME, DB_PASSWORD);
 
                 // ensure that PDO::prepare returns false when passed invalid SQL
                 $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 
@@ -107,7 +114,7 @@
     function query_etd($station_abbr) {
 
         // load BART API etd xml
-        $xml = simplexml_load_file("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=$station_abbr&key=MW9S-E7SL-26DU-VV8V");
+        $xml = simplexml_load_file("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=$station_abbr&key=" . KEY);
 
         $station = $xml->station;
 

@@ -4,7 +4,7 @@
     require('../models/model.php');
 
     // load stations xml
-    $xml = simplexml_load_file('http://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V');
+    $xml = simplexml_load_file('http://api.bart.gov/api/stn.aspx?cmd=stns&key=' . KEY);
 
     $stations = $xml->stations->station;
 
@@ -16,7 +16,7 @@
     }
 
     // load routes
-    $xml = simplexml_load_file('http://api.bart.gov/api/route.aspx?cmd=routes&key=MW9S-E7SL-26DU-VV8V');
+    $xml = simplexml_load_file('http://api.bart.gov/api/route.aspx?cmd=routes&key=' . KEY);
 
     $routes = $xml->routes->route;
 
@@ -25,7 +25,7 @@
 
         // load routeinfo xml
         $routeinfo = simplexml_load_file('http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=' . $route->number .
-            '&key=MW9S-E7SL-26DU-VV8V');
+            '&key=' . KEY);
 
         // find route's configuration
         $stations = $routeinfo->routes->route->config->station;
