@@ -11,32 +11,73 @@
  * - General
  * - Header
  * - Route form
+ * - Map
  * - InfoWindows
  * - Footer
  */
 
 /* General */
 
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 html, body {
     width: 100%;
     height: 100%;
 }
 
-#map-canvas {
-    width: 100%;
-    height: 80%;
+body {
+    font-family: "Lato", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Header */
 
+.header {
+    text-align: center;
+    padding: 30px;
+    height: 80px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.site-title {
+    position: absolute;
+    left: 20px;
+    top: 5px;
+}
+
+#route-form {
+}
 
 
 /* Route form */
 
 
 
+/* Map */
+
+#map-canvas {
+    width: 100%;
+    height: 80%;
+}
+
 /* InfoWindows */
 
 
 
 /* Footer */
+
+.footer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    font-size: 10px;
+    background-color: #fff;
+}
