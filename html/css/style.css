@@ -1,9 +1,42 @@
+/**
+ * Project2: The BART
+ *
+ * Computer Science E-75
+ * Nelson Reitz
+ *
+ * http://github.com/nelsonreitz/project2
+ */
+
+/** Table of content
+ * - General
+ * - Header
+ * - Route form
+ * - InfoWindows
+ * - Footer
+ */
+
+/* General */
+
 html, body {
     width: 100%;
     height: 100%;
 }
 
 #map-canvas {
-    width: 60%;
-    height: 60%;
+    width: 100%;
+    height: 80%;
 }
+
+/* Header */
+
+
+
+/* Route form */
+
+
+
+/* InfoWindows */
+
+
+
+/* Footer */
