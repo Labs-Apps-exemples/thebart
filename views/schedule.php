@@ -1,25 +1,34 @@
 <h2><?= $station->name ?></h2>
-<p>Next departures:</p>
-<table>
 
-  <thead>
-    <tr>
-      <th>Destination:</th>
-      <th>Time:</th>
-    </tr>
-  </thead>
+<?php if (empty($departures)): ?>
 
-  <tbody>
+    <p>No departures scheduled in the next hour.</p>
 
-    <?php foreach ($departures as $departure): ?>
+<?php else: ?>
 
-          <tr>
-            <th><?= $departure['destination'] ?></th>
-            <th><?= $departure['minutes'] ?><?= ($departure['minutes'] == 'Leaving') ? '' : ' min' ?></th>
-          </tr>
+    <p>Next departures:</p>
+    <table>
 
-    <?php endforeach ?>
+      <thead>
+        <tr>
+          <th>Destination:</th>
+          <th>Time:</th>
+        </tr>
+      </thead>
 
-  </tbody>
+      <tbody>
 
-</table>
+        <?php foreach ($departures as $departure): ?>
+
+              <tr>
+                <th><?= $departure['destination'] ?></th>
+                <th><?= $departure['minutes'] ?><?= ($departure['minutes'] == 'Leaving') ? '' : ' min' ?></th>
+              </tr>
+
+        <?php endforeach ?>
+
+      </tbody>
+
+    </table>
+
+<?php endif ?>

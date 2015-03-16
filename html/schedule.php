@@ -34,7 +34,7 @@
         array_multisort($minutes, SORT_NUMERIC, $departures);
 
         // render schedule html
-        extract(['departures' => $departures]);
+        extract(['departures' => $departures, 'station' => $station]);
         require('../views/schedule.php');
     }
     else
