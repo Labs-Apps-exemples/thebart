@@ -10,7 +10,7 @@
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', 'root');
 
-    // BART's API public key
+    // BART API public key
     define('KEY', 'MW9S-E7SL-26DU-VV8V');
 
     /**
@@ -76,8 +76,10 @@
      */
     function query_route($route_number)
     {
+        // query routes from databse
         $query = query("SELECT * FROM routes WHERE number = ?", $route_number);
 
+        // iterate each row
         foreach ($query[0] as $key => $value)
         {
             if ($key === 'config')
@@ -90,6 +92,7 @@
                     // query current station
                     $query = query("SELECT * FROM stations WHERE abbr = ?", $station_abbr);
 
+                    // buld assiociative array
                     $station = [];
                     foreach($query[0] as $key => $value)
                     {
@@ -115,6 +118,10 @@
 
         // load BART API etd xml
         $xml = simplexml_load_file("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=$station_abbr&key=" . KEY);
+        if ($xml === false)
+        {
+            return false;
+        }
 
         $station = $xml->station;
 

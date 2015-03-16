@@ -5,6 +5,10 @@
 
     // load stations xml
     $xml = simplexml_load_file('http://api.bart.gov/api/stn.aspx?cmd=stns&key=' . KEY);
+    if ($xml === false)
+    {
+        trigger_error('Could not connect to BART API', E_USER_ERROR);
+    }
 
     $stations = $xml->stations->station;
 
@@ -17,6 +21,10 @@
 
     // load routes
     $xml = simplexml_load_file('http://api.bart.gov/api/route.aspx?cmd=routes&key=' . KEY);
+    if ($xml === false)
+    {
+        trigger_error('Could not connect to BART API', E_USER_ERROR);
+    }
 
     $routes = $xml->routes->route;
 
@@ -24,8 +32,12 @@
     {
 
         // load routeinfo xml
-        $routeinfo = simplexml_load_file('http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=' . $route->number .
-            '&key=' . KEY);
+        $routeinfo = simplexml_load_file('http://api.bart.gov/api/route.aspx?' .
+            'cmd=routeinfo&route=' . $route->number . '&key=' . KEY);
+        if ($routeinfo === false)
+        {
+            trigger_error('Could not connect to BART API', E_USER_ERROR);
+        }
 
         // find route's configuration
         $stations = $routeinfo->routes->route->config->station;
