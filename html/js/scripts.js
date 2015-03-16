@@ -11,7 +11,23 @@ $(document).ready(function() {
     // create new Map
     var mapOptions = {
         center: sfCoords,
-        zoom: 11
+        zoom: 11,
+        styles: [
+            {
+                stylers: [
+                    { visibility: "simplified" },
+                    { saturation: -100 }
+                ]
+            },
+            {
+                featureType: "water",
+                elementType: "all",
+                stylers: [
+                    { hue: "#005eff" },
+                    { saturation: 67 }
+                ]
+            }
+        ]
     }
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
