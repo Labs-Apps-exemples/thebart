@@ -128,6 +128,10 @@ select:focus {
 #map-canvas {
     width: 100%;
     height: 80%;
+    height: -moz-calc(100% - 90px - 45px);
+    height: -webkit-calc(100% - 90px - 45px);
+    height: -o-calc(100% - 90px - 45px);
+    height: calc(100% - 90px - 45px);
 }
 
 /* InfoWindows */
@@ -139,8 +143,25 @@ select:focus {
 .footer {
     position: absolute;
     width: 100%;
-    text-align: center;
     bottom: 0;
-    font-size: 10px;
+    font-size: 11px;
+    text-align: center;
     background-color: #fff;
+    color: #888;
+    padding: 17px;
+    height: 45px;
+    border-top: 1px solid #bbb;
+}
+
+.footer p {
+    line-height: 11px;
+    margin: 0;
+}
+
+.footer a {
+    color: #888;
+}
+
+#powered {
+    margin-right: 20px;
 }
