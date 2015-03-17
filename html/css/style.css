@@ -39,8 +39,44 @@ body {
 a {
     text-decoration: none;
     color: black;
-    font-weight: 600;
+    font-weight: 700;
 }
+
+/* Header */
+
+.header {
+    text-align: center;
+    padding: 31px;
+    height: 90px;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #bbb;
+    display: block;
+}
+
+.site-title {
+    font-size: 40px;
+    position: absolute;
+    left: 33px;
+    top: 3px;
+}
+
+.site-title a {
+}
+
+#route_form {
+}
+
+#route_form label {
+    text-transform: uppercase;
+    margin-right: 15px;
+    font-size: 12px;
+    letter-spacing: .05rem;
+    font-weight: 700;
+    color: #444;
+}
+
+/* Route form */
 
 input[type="submit"] {
     display: inline-block;
@@ -49,7 +85,7 @@ input[type="submit"] {
     color: #555;
     text-align: center;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 38px;
     letter-spacing: .05rem;
     text-decoration: none;
@@ -85,44 +121,6 @@ select:focus {
   outline: 0; 
 }
 
-/* Header */
-
-.header {
-    text-align: center;
-    padding: 31px;
-    height: 90px;
-    width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #bbb;
-    display: block;
-}
-
-.site-title {
-    font-size: 40px;
-    position: absolute;
-    left: 33px;
-    top: 3px;
-}
-
-.site-title a {
-}
-
-#route_form {
-}
-
-#route_form label {
-    text-transform: uppercase;
-    margin-right: 15px;
-    font-size: 12px;
-    letter-spacing: .05rem;
-    font-weight: 600;
-    color: #444;
-}
-
-/* Route form */
-
-
-
 /* Map */
 
 #map-canvas {
@@ -136,7 +134,51 @@ select:focus {
 
 /* InfoWindows */
 
+.infowindow {
+    font-weight: 400;
+}
 
+.infowindow table {
+    width: 100%;
+}
+
+.infowindow-header {
+    margin: 0 0 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.infowindow h2 {
+    margin: 3px 0 1px 0;
+}
+
+.infowindow p {
+    margin: 0;
+}
+
+.infowindow th {
+    padding: 1px 0;
+}
+
+.infowindow thead tr {
+    height: 20px;
+    text-transform: uppercase;
+}
+
+thead .destination {
+    font-weight: 700;
+}
+
+.destination {
+    text-align: left;
+    width: 150px;
+    font-weight: 400;
+}
+
+.minutes {
+    font-weight: 700;
+    text-align: right;
+}
 
 /* Footer */
 
