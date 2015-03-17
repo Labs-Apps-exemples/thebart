@@ -9,7 +9,7 @@
     <title>The BART</title>
 
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:700,400' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -24,6 +24,7 @@
 
       <h1 class="site-title"><a href="/">The BART</a></h1>
       <form id="route_form">
+        <label for="route_select">Route:</label>
         <select id="route_select">
 
           <?php foreach ($routes as $route): ?>
