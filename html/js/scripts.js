@@ -1,5 +1,5 @@
 // San Francisco coordinates
-var sfCoords = new google.maps.LatLng(37.7489, -122.4355);
+var sfCoords = new google.maps.LatLng(37.7726952, -122.3206986);
 
 // global variables
 var map;
@@ -116,6 +116,7 @@ function addPolyline(route) {
     var polyline = new google.maps.Polyline({
         path: routeCoords,
         strokeColor: route.color,
+        strokeWeight: 4
     });
 
     // push Polyline to overlays array
