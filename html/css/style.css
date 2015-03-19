@@ -34,11 +34,12 @@ html, body {
 
 body {
     font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #262626;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: #262626;
     font-weight: 700;
 }
 
@@ -64,6 +65,8 @@ a {
 .site-title a {
 }
 
+/* Route form */
+
 #route_form {
 }
 
@@ -73,16 +76,12 @@ a {
     font-size: 12px;
     letter-spacing: .05rem;
     font-weight: 700;
-    color: #444;
 }
-
-/* Route form */
 
 input[type="submit"] {
     display: inline-block;
     height: 38px;
     padding: 0 30px;
-    color: #555;
     text-align: center;
     font-size: 11px;
     font-weight: 700;
@@ -117,7 +116,7 @@ select {
 }
 
 select:focus {
-  border: 1px solid grey;
+  border: 1px solid #888;
   outline: 0; 
 }
 
@@ -129,7 +128,7 @@ select:focus {
     height: -moz-calc(100% - 90px - 45px);
     height: -webkit-calc(100% - 90px - 45px);
     height: -o-calc(100% - 90px - 45px);
-    height: calc(100% - 90px - 45px);
+    height: calc(100% - 90px - 45px); /* 100% minus header and footer height */
 }
 
 /* InfoWindows */
