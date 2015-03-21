@@ -31,31 +31,14 @@ $(document).ready(function() {
     }
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-    $("#route_form").submit(function() {
+    // display default route
+    displayRoute(1);
 
-        // clear overlays (http://apitricks.blogspot.ch/2010/02/clearoverlays-in-v3.html)
-        while (overlays[0]) {
-            overlays.pop().setMap(null);
-        }
+    // display selected route
+    $("#route_select").change(function() {
 
         var routeNumber = $("#route_select").val();
-
-        // query route infos via Ajax
-        $.ajax({
-            url: "route.php",
-            data: {
-                route_number: routeNumber
-            },
-            success: function(route) {
-
-                $.each(route.config, function(index, station){
-                    addMarker(station);
-                });
-                addPolyline(route);
-            }
-        });
-
-        return false;
+        displayRoute(routeNumber);
     });
 });
 
@@ -123,4 +106,30 @@ function addPolyline(route) {
     overlays.push(polyline);
 
     polyline.setMap(map);
+}
+
+/**
+ * Displays a BART route on the map.
+ */
+function displayRoute(routeNumber) {
+
+        // clear overlays (http://apitricks.blogspot.ch/2010/02/clearoverlays-in-v3.html)
+        while (overlays[0]) {
+            overlays.pop().setMap(null);
+        }
+
+        // query route infos via Ajax
+        $.ajax({
+            url: "route.php",
+            data: {
+                route_number: routeNumber
+            },
+            success: function(route) {
+
+                $.each(route.config, function(index, station){
+                    addMarker(station);
+                });
+                addPolyline(route);
+            }
+        });
 }

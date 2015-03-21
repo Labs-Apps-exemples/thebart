@@ -24,7 +24,6 @@
 
       <h1 class="site-title"><a href="/">The BART</a></h1>
       <form id="route_form">
-        <label for="route_select">Route:</label>
         <select id="route_select">
 
           <?php foreach ($routes as $route): ?>
@@ -32,7 +31,6 @@
           <?php endforeach ?>
 
         </select>
-        <input type="submit" value="Submit">
       </form>
 
     </header>
