@@ -8,7 +8,6 @@
 
     <title>The BART</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:700,400' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="css/normalize.css">
@@ -22,7 +21,11 @@
   <body>
     <header class="header" role="banner">
 
-      <h1 class="site-title"><a href="/">The BART</a></h1>
+      <div class="site-title">
+        <h1 class="logo"><a href="/">The BART</a></h1>
+        <h2 class="subtitle">Bay Area Rapid Transit</h2>
+      </div><!-- .site-title -->
+
       <form id="route_form">
         <select id="route_select">
 

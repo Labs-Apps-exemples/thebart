@@ -49,17 +49,31 @@ a {
     background-color: #fff;
     border-bottom: 1px solid #bbb;
     height: 80px;
-    padding: 33px;
+    padding: 32px 33px 9px 33px;
+    position: relative;
     text-align: center;
     width: 100%;
 }
 
 .site-title {
-    font-size: 43px;
-    left: 33px;
-    line-height: 38px;
+    margin-left: 0;
     position: absolute;
-    top: 7px;
+    top: 20px;
+}
+
+.logo {
+    font-size: 36px;
+    line-height: 36px;
+    margin: 0;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .05rem;
+    line-height: 15px;
+    margin: 0;
 }
 
 .site-title a {
@@ -67,39 +81,6 @@ a {
 }
 
 /* Route form */
-
-#route_form label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .05rem;
-    margin-right: 15px;
-    text-transform: uppercase;
-}
-
-input[type="submit"] {
-    background-color: transparent;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: 700;
-    height: 38px;
-    letter-spacing: .05rem;
-    line-height: 38px;
-    padding: 0 30px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-input[type="submit"]:hover,
-input[type="submit"]:focus {
-    border-color: #888;
-    color: #333;
-    outline: 0;
-}
 
 select {
     background-color: #fff;
