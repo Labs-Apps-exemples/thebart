@@ -1,33 +1,43 @@
-// San Francisco coordinates
-var sfCoords = new google.maps.LatLng(37.7726952, -122.3206986);
+/**
+ * scripts.js
+ *
+ * Computer Science E-75
+ * Project 2
+ *
+ * Nelson Reitz
+ * http://github.com/nelsonreitz/project2
+ */
 
 // global variables
 var map;
 var infowindow;
 var overlays = [];
 
+// San Francisco coordinates to center the map on
+var sfCoords = new google.maps.LatLng(37.7726952, -122.3206986);
+
 $(document).ready(function() {
 
     // create new Map
     var mapOptions = {
-        center: sfCoords,
-        zoom: 11,
-        styles: [
-            {
-                stylers: [
-                    { visibility: "simplified" },
-                    { saturation: -100 }
-                ]
-            },
-            {
-                featureType: "water",
-                elementType: "all",
-                stylers: [
-                    { hue: "#005eff" },
-                    { saturation: 67 }
-                ]
-            }
-        ]
+      center: sfCoords,
+      zoom: 11,
+      styles: [
+        {
+          stylers: [
+            { visibility: "simplified" },
+            { saturation: -100 }
+          ]
+        },
+        {
+          featureType: "water",
+          elementType: "all",
+          stylers: [
+            { hue: "#005eff" },
+            { saturation: 67 }
+          ]
+        }
+      ]
     }
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
@@ -49,9 +59,9 @@ function addMarker(station) {
 
     // create new Marker at station location
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(station.latitude, station.longitude),
-        map: map,
-        title: station.name
+      position: new google.maps.LatLng(station.latitude, station.longitude),
+      map: map,
+      title: station.name
     });
 
     // push Marker in overlays array
@@ -67,19 +77,19 @@ function addMarker(station) {
 
         // query estimate departure time via Ajax
         $.ajax({
-            url: "departures.php",
-            data: {
-                station_abbr: station.abbr
-            },
-            success: function(departures) {
+          url: "departures.php",
+          data: {
+            station_abbr: station.abbr
+          },
+          success: function(departures) {
 
-                // create new InfoWindow
-                infowindow = new google.maps.InfoWindow({
-                    content: departures
-                });
+              // create new InfoWindow
+              infowindow = new google.maps.InfoWindow({
+                content: departures
+              });
 
-                infowindow.open(map, marker);
-            }
+              infowindow.open(map, marker);
+          }
         });
     });
 }
@@ -91,15 +101,15 @@ function addPolyline(route) {
 
     // build an array of route config coordinates
     var routeCoords = [];
-    $.each(route.config, function(index, station){
+    $.each(route.config, function(index, station) {
         routeCoords.push(new google.maps.LatLng(station.latitude, station.longitude));
     });
 
     // create new Polyline
     var polyline = new google.maps.Polyline({
-        path: routeCoords,
-        strokeColor: route.color,
-        strokeWeight: 4
+      path: routeCoords,
+      strokeColor: route.color,
+      strokeWeight: 4
     });
 
     // push Polyline to overlays array
@@ -113,23 +123,24 @@ function addPolyline(route) {
  */
 function displayRoute(routeNumber) {
 
-        // clear overlays (http://apitricks.blogspot.ch/2010/02/clearoverlays-in-v3.html)
-        while (overlays[0]) {
-            overlays.pop().setMap(null);
-        }
+    // clear overlays (http://apitricks.blogspot.ch/2010/02/clearoverlays-in-v3.html)
+    while (overlays[0]) {
+        overlays.pop().setMap(null);
+    }
 
-        // query route infos via Ajax
-        $.ajax({
-            url: "route.php",
-            data: {
-                route_number: routeNumber
-            },
-            success: function(route) {
+    // query route infos via Ajax
+    $.ajax({
+      url: "route.php",
+      data: {
+        route_number: routeNumber
+      },
+      success: function(route) {
 
-                $.each(route.config, function(index, station){
-                    addMarker(station);
-                });
-                addPolyline(route);
-            }
-        });
+          $.each(route.config, function(index, station) {
+              addMarker(station);
+          });
+
+          addPolyline(route);
+      }
+    });
 }
