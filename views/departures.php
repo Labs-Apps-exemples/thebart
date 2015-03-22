@@ -34,4 +34,5 @@
       </table>
 
   <?php endif ?>
+
 </div><!-- .infowindow -->

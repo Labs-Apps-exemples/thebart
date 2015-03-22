@@ -2,6 +2,14 @@
 
     /**
      * model.php
+     *
+     * Computer Science E-75
+     * Project 2
+     *
+     * Nelson Reitz
+     * http://github.com/nelsonreitz/project2
+     *
+     * Database and BART API queries related functions.
      */
 
     // global constants
@@ -16,6 +24,8 @@
     /**
      * Executes SQL statement, possibly with parameters, returning
      * an array of all rows in result set or false on (non-fatal) error.
+     *
+     * (taken from CS50x 2014 problem set 7: CS50 Finance).
      */
     function query(/* $sql [, ... ] */)
     {
@@ -76,7 +86,7 @@
      */
     function query_route($route_number)
     {
-        // query routes from databse
+        // query route from databse
         $query = query("SELECT * FROM routes WHERE number = ?", $route_number);
 
         // iterate each row
@@ -92,7 +102,7 @@
                     // query current station
                     $query = query("SELECT * FROM stations WHERE abbr = ?", $station_abbr);
 
-                    // buld assiociative array
+                    // build associative array
                     $station = [];
                     foreach($query[0] as $key => $value)
                     {
@@ -124,7 +134,6 @@
         }
 
         $station = $xml->station;
-
         return $station;
     }
 

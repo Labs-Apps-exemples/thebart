@@ -1,5 +1,17 @@
 <?php
 
+    /**
+     * departures.php
+     *
+     * Computer Science E-75
+     * Project 2
+     *
+     * Nelson Reitz
+     * http://github.com/nelsonreitz/project2
+     *
+     * Outputs JSON infos about the next departures of a specified station.
+     */
+
     // configuration
     require('../models/model.php');
 
@@ -33,13 +45,13 @@
         }
         array_multisort($minutes, SORT_NUMERIC, $departures);
 
-        // render schedule html
+        // render departures html
         extract(['departures' => $departures, 'station' => $station]);
-        require('../views/schedule.php');
+        require('../views/departures.php');
     }
     else
     {
-        print('Could not query schedule');
+        print('Could not query departures');
     }
 
 ?>

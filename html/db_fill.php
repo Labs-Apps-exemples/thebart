@@ -1,5 +1,18 @@
 <?php
 
+    /**
+     * db_fill.php
+     *
+     * Computer Science E-75
+     * Project 2
+     *
+     * Nelson Reitz
+     * http://github.com/nelsonreitz/project2
+     *
+     * Fills a MySQL database with routes and station informations
+     * from BART API.
+     */
+
     // configuration
     require('../models/model.php');
 
@@ -12,7 +25,7 @@
 
     $stations = $xml->stations->station;
 
-    // insert every stations
+    // insert stations
     foreach ($stations as $station)
     {
         query("INSERT INTO stations (abbr, name, latitude, longitude) VALUES (?, ?, ?, ?)",
@@ -42,7 +55,7 @@
         // find route's configuration
         $stations = $routeinfo->routes->route->config->station;
 
-        // prepare array
+        // build array
         $config = [];
         foreach ($stations as $station)
         {

@@ -67,15 +67,15 @@ function addMarker(station) {
 
         // query estimate departure time via Ajax
         $.ajax({
-            url: "schedule.php",
+            url: "departures.php",
             data: {
                 station_abbr: station.abbr
             },
-            success: function(schedule) {
+            success: function(departures) {
 
                 // create new InfoWindow
                 infowindow = new google.maps.InfoWindow({
-                    content: schedule
+                    content: departures
                 });
 
                 infowindow.open(map, marker);

@@ -1,5 +1,17 @@
 <?php
 
+    /**
+     * route.php
+     *
+     * Computer Science E-75
+     * Project 2
+     *
+     * Nelson Reitz
+     * http://github.com/nelsonreitz/project2
+     *
+     * Outputs JSON infos about a specified route.
+     */
+
     // configuration
     require('../models/model.php');
 
