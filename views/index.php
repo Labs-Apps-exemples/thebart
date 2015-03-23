@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
