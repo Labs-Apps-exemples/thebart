@@ -14,6 +14,8 @@
  * - Map
  * - InfoWindows
  * - Footer
+ * - Small screen
+ * - Medium screen
  */
 
 /* General */
@@ -184,4 +186,31 @@ thead .destination {
 
 #powered {
     margin-right: 20px;
+}
+
+/* Small screen */
+
+@media screen and (max-width: 760px) {
+
+    .header {
+        padding: 32px 9px 9px 9px;
+        text-align: right;
+    }
+
+    .site-title {
+        text-align: center;
+    }
+}
+
+/* Medium screen */
+
+@media screen and (max-width: 906px) {
+
+    .footer {
+        padding: 9px 17px;
+    }
+
+    .footer p {
+        line-height: 14px;
+    }
 }
