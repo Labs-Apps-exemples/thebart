@@ -9,7 +9,6 @@ As per the project [specification](http://cdn.cs75.net/2012/summer/projects/2/pr
 
 #### To do
 - Auto-center map on route selection
-- Mobile media queries CSS
 
 #### Credits
 This project was created using the [jQuery](http://http://jquery.com) library, the [Google maps API](https://developers.google.com/maps/web), the [BART API](http://www.bart.gov/schedules/developers/api) and the [Roboto](http://www.google.com/fonts/specimen/Roboto) font by [Christian Robertson](http://christianrobertson.com).
