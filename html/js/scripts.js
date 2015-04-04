@@ -18,7 +18,24 @@ var sfCoords = new google.maps.LatLng(37.7726952, -122.3206986);
 
 $(document).ready(function() {
 
-    // create new Map
+    drawMap();
+
+    // display default route
+    displayRoute(1);
+
+    // display selected route
+    $("#route_select").change(function() {
+
+        var routeNumber = $("#route_select").val();
+        displayRoute(routeNumber);
+    });
+});
+
+/**
+ * Draws a google map.
+ */
+function drawMap() {
+
     var mapOptions = {
       center: sfCoords,
       zoom: 11,
@@ -38,19 +55,9 @@ $(document).ready(function() {
           ]
         }
       ]
-    }
+    };
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-    // display default route
-    displayRoute(1);
-
-    // display selected route
-    $("#route_select").change(function() {
-
-        var routeNumber = $("#route_select").val();
-        displayRoute(routeNumber);
-    });
-});
+}
 
 /**
  * Adds a Marker and corresponding InfoWindow.
