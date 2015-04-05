@@ -108,7 +108,7 @@ function addPolyline(route) {
 
     // build an array of route config coordinates
     var routeCoords = [];
-    $.each(route.config, function(index, station) {
+    route.config.forEach(function(station) {
         routeCoords.push(new google.maps.LatLng(station.latitude, station.longitude));
     });
 
@@ -143,7 +143,7 @@ function displayRoute(routeNumber) {
       },
       success: function(route) {
 
-          $.each(route.config, function(index, station) {
+          route.config.forEach(function(station) {
               addMarker(station);
           });
 
