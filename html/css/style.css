@@ -45,6 +45,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 /* Header */
 
 .header {
@@ -61,6 +65,10 @@ a {
     margin-left: 0;
     position: absolute;
     top: 20px;
+}
+
+.site-title a:hover {
+    text-decoration: none;
 }
 
 .logo {
