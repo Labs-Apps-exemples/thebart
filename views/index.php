@@ -47,7 +47,7 @@
       <p><a id="powered" href="http://www.bart.gov/schedules/developers/api">Powered by BART API</a>
       This is a fictive website built as an exercise for the <a href="http://cs75.tv">Computer Science E-75</a> course.
       More info at <a href="https://github.com/nelsonreitz/project2">github.com/nelsonreitz/project2</a>.
-      &copy; Nelson Reitz - 2015</p>
+      &copy; Nelson Reitz - 2016</p>
     </footer>
   </body>
 </html>
