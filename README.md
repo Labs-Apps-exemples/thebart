@@ -1,6 +1,6 @@
-## [Project2: The BART](http://project2.nelsonreitz.com)
+## [Project2: The BART](http://project2.nelsonreitz.ch)
 
-Live demonstration: [http://project2.nelsonreitz.com](http://project2.nelsonreitz.com)
+Live demonstration: [http://project2.nelsonreitz.ch](http://project2.nelsonreitz.ch)
 
 This project is a fictive website built as an exercice for the [Computer Science E-75](http://cs75.tv) online course. The purpose of this
 exercise is to give an introduction to Ajax and third-party APIs.
